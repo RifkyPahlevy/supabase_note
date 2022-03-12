@@ -42,6 +42,7 @@ class ProfileView extends GetView<ProfileController> {
             ),
             SizedBox(height: 20),
             TextField(
+              readOnly: true,
               controller: controller.emailC,
               decoration: InputDecoration(
                 labelText: 'Email',
@@ -51,6 +52,17 @@ class ProfileView extends GetView<ProfileController> {
             SizedBox(
               height: 20,
             ),
+            Obx(() => TextField(
+                  controller: controller.passC,
+                  obscureText: controller.isHidden.value,
+                  decoration: InputDecoration(
+                      labelText: "Password",
+                      border: OutlineInputBorder(),
+                      suffix: IconButton(
+                        onPressed: () => controller.isHidden.toggle(),
+                        icon: Icon(Icons.remove_red_eye_outlined),
+                      )),
+                )),
             Text("Last Login"),
             SizedBox(
               height: 7,
@@ -62,7 +74,13 @@ class ProfileView extends GetView<ProfileController> {
             ElevatedButton(
                 onPressed: () {
                   if (controller.isLoading.isFalse) {
-                    //controller.signUp();
+                    controller.updateProfile();
+
+                    if (controller.passC.text.isNotEmpty) {
+                      controller.logOut();
+                      authC.reset();
+                      Get.offAllNamed(Routes.LOGIN);
+                    }
                   }
                 },
                 child: Obx(() => Text(controller.isLoading.isFalse
