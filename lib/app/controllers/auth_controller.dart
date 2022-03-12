@@ -13,7 +13,7 @@ class AuthController extends GetxController {
     if (authTimer != null) {
       authTimer!.cancel();
     } else {
-      authTimer = Timer(Duration(seconds: 10), () async {
+      authTimer = Timer(Duration(seconds: 3600 * 60), () async {
         await client.auth.signOut();
         Get.offAllNamed(Routes.LOGIN);
         print("Auto Logout Dijalankan");

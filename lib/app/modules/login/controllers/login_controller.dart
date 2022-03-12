@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:supanote/app/routes/app_pages.dart';
 
 class LoginController extends GetxController {
   TextEditingController nameC = TextEditingController();

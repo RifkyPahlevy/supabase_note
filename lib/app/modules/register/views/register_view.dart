@@ -20,6 +20,14 @@ class RegisterView extends GetView<RegisterController> {
             border: OutlineInputBorder(),
           ),
         ),
+        SizedBox(height: 20),
+        TextField(
+          controller: controller.emailC,
+          decoration: InputDecoration(
+            labelText: 'Email',
+            border: OutlineInputBorder(),
+          ),
+        ),
         SizedBox(
           height: 20,
         ),
