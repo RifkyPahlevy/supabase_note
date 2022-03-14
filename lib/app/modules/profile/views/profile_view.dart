@@ -72,12 +72,12 @@ class ProfileView extends GetView<ProfileController> {
               height: 20,
             ),
             ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
                   if (controller.isLoading.isFalse) {
-                    controller.updateProfile();
+                    await controller.updateProfile();
 
                     if (controller.passC.text.isNotEmpty) {
-                      controller.logOut();
+                      await controller.logOut();
                       authC.reset();
                       Get.offAllNamed(Routes.LOGIN);
                     }

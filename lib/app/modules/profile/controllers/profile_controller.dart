@@ -34,7 +34,7 @@ class ProfileController extends GetxController {
         .format(DateTime.parse(client.auth.currentUser!.lastSignInAt!));
   }
 
-  void updateProfile() async {
+  Future<void> updateProfile() async {
     isLoading.value = true;
     if (nameC.text.isNotEmpty) {
       await client.from("users").update({
@@ -44,18 +44,20 @@ class ProfileController extends GetxController {
       if (passC.text.isNotEmpty) {
         if (passC.text.length > 6) {
           try {
+            print(passC.text);
             await client.auth.api.updateUser(
               client.auth.currentSession!.accessToken,
               UserAttributes(password: passC.text),
             );
           } catch (e) {
             Get.snackbar("Terjadi Kesalahan", "$e");
+            print(e);
           }
         } else {
           Get.snackbar("Alert", "Password kurang dari 6 karakter");
         }
+        isLoading.value = false;
       }
-      isLoading.value = false;
     }
   }
 }

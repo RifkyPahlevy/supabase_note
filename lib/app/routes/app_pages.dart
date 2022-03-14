@@ -1,5 +1,9 @@
 import 'package:get/get.dart';
 
+import 'package:supanote/app/modules/add_note/bindings/add_note_binding.dart';
+import 'package:supanote/app/modules/add_note/views/add_note_view.dart';
+import 'package:supanote/app/modules/edit/bindings/edit_binding.dart';
+import 'package:supanote/app/modules/edit/views/edit_view.dart';
 import 'package:supanote/app/modules/home/bindings/home_binding.dart';
 import 'package:supanote/app/modules/home/views/home_view.dart';
 import 'package:supanote/app/modules/login/bindings/login_binding.dart';
@@ -36,6 +40,16 @@ class AppPages {
       name: _Paths.PROFILE,
       page: () => ProfileView(),
       binding: ProfileBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADD_NOTE,
+      page: () => AddNoteView(),
+      binding: AddNoteBinding(),
+    ),
+    GetPage(
+      name: _Paths.EDIT,
+      page: () => EditView(),
+      binding: EditBinding(),
     ),
   ];
 }
